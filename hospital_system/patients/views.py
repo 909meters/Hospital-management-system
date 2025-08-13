@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions, generics
 from .models import MedicalRecord, Patient
-from .serializers import MedicalRecordSerializer
+from .serializers import MedicalRecordSerializer, PatientSerializer
 from .permissions import IsDoctorOrAdmin
+
+class PatientViewSet(viewsets.ModelViewSet):
+    queryset = Patient.objects.all()
+    serializer_class = PatientSerializer
+    permission_classes = [permissions.IsAuthenticated, IsDoctorOrAdmin]
 
 class MedicalRecordViewSet(viewsets.ModelViewSet):
     serializer_class = MedicalRecordSerializer
