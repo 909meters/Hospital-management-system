@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import MedicalRecord, Patient
 
 class PatientSerializer(serializers.ModelSerializer):
-    user_full_name = serializers.CharField(source='user.get_full_name', read_only=True)
+    full_name = serializers.CharField(source='user.get_full_name', read_only=True)
 
     class Meta:
         model = Patient

@@ -4,10 +4,23 @@ from .models import Appointment, DoctorSchedule
 from .serializers import AppointmentSerializer, DoctorScheduleSerializer
 from patients.models import Patient
 from .permissions import IsOwnerOrDoctorOrAdmin
+import django_filters
+
+class AppointmentFilter(django_filters.FilterSet):
+    start_time = django_filters.DateTimeFromToRangeFilter()
+
+    class Meta:
+        model = Appointment
+        fields = {
+            'status': ['exact'],
+            'doctor': ['exact'],
+            'patient__user__username': ['icontains'],
+        }
 
 class AppointmentListCreateView(generics.ListCreateAPIView):
     serializer_class = AppointmentSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filterset_class = AppointmentFilter
 
     def get_queryset(self):
         user = self.request.user
