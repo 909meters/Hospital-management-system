@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "hospital-system-api",
+		"name": "Hospital Management System API",
+		"description": "API for the Hospital Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login - Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    const response = pm.response.json();",
+									"    pm.environment.set(\"token\", response.token);",
+									"    console.log(\"Token saved:\", response.token);",
+									"    pm.test(\"Token received\", function() {",
+									"        pm.expect(response.token).to.not.be.undefined;",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login", ""]
+						}
+					}
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/profile/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "profile", ""]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "logout", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": [
+				{
+					"name": "Get All Patients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Patient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Иван\",\n    \"last_name\": \"Петров\",\n    \"date_of_birth\": \"1985-03-15\",\n    \"phone_number\": \"+7 (999) 123-45-67\",\n    \"email\": \"ivan.petrov@email.com\",\n    \"address\": \"г. Москва, ул. Ленина, д. 10, кв. 5\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", ""]
+						}
+					}
+				},
+				{
+					"name": "Get Patient by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Иван\",\n    \"last_name\": \"Петров\",\n    \"date_of_birth\": \"1985-03-15\",\n    \"phone_number\": \"+7 (999) 123-45-67\",\n    \"email\": \"ivan.petrov@email.com\",\n    \"address\": \"г. Москва, ул. Новая, д. 15, кв. 10\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Delete Patient",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/1/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Search Patients by Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/patients/patients/?first_name=Иван",
+							"host": ["{{base_url}}"],
+							"path": ["api", "patients", "patients", ""],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Иван"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "users", ""]
+						}
+					}
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"new_doctor\",\n    \"email\": \"doctor@hospital.com\",\n    \"password\": \"secure_password\",\n    \"first_name\": \"Анна\",\n    \"last_name\": \"Смирнова\",\n    \"role\": \"doctor\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "users", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Scheduling",
+			"item": [
+				{
+					"name": "Get All Appointments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/scheduling/appointments/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheduling", "appointments", ""]
+						}
+					}
+				},
+				{
+					"name": "Create Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient\": 1,\n    \"doctor\": 2,\n    \"appointment_date\": \"2025-08-25\",\n    \"appointment_time\": \"14:30:00\",\n    \"notes\": \"Плановый осмотр\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/scheduling/appointments/",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheduling", "appointments", ""]
+						}
+					}
+				},
+				{
+					"name": "Filter Appointments by Date",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/scheduling/appointments/?appointment_date=2025-08-25",
+							"host": ["{{base_url}}"],
+							"path": ["api", "scheduling", "appointments", ""],
+							"query": [
+								{
+									"key": "appointment_date",
+									"value": "2025-08-25"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

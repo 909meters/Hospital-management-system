@@ -16,11 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken import views
+from rest_framework.authtoken.views import obtain_auth_token
+from .auth_views import CustomAuthToken, logout_view, user_profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/scheduling/', include('scheduling.urls')),
     path('api-auth/', include('rest_framework.urls')),  
-    path('api/', include('patients.urls')),
+    path('api/patients/', include('patients.urls')),
+    
+    # AUthentication URLs
+    path('api/auth/login/', CustomAuthToken.as_view(), name='api_token_auth'),
+    path('api/auth/logout/', logout_view, name='api_logout'),
+    path('api/auth/profile/', user_profile, name='user_profile'),
+    path('api/auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
