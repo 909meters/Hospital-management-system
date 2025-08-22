@@ -1,16 +1,28 @@
+version: '3.8'
+
 services:
   web:
     build: .
-    # Using Gunicorn to serve the Django application
-    command: gunicorn hospital_system.wsgi:application --bind 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             gunicorn hospital_system.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/app
+      - static_volume:/app/staticfiles
     ports:
       - "8000:8000"
     depends_on:
       - db
     environment:
-      - SECRET_KEY=${SECRET_KEY} # <-- Pass the secret key to the container
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=False
+      - DB_NAME=hospital_db
+      - DB_USER=hospital_user
+      - DB_PASSWORD=hospital_pass
+      - DB_HOST=db
+      - DB_PORT=5432
+      - ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
 
   db:
     image: postgres:13
@@ -20,6 +32,21 @@ services:
       - POSTGRES_DB=hospital_db
       - POSTGRES_USER=hospital_user
       - POSTGRES_PASSWORD=hospital_pass
+    ports:
+      - "5432:5432"
+
+  frontend:
+    build: ../frontend
+    command: streamlit run hospital_app.py --server.port=8501 --server.address=0.0.0.0
+    volumes:
+      - ../frontend:/app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - web
+    environment:
+      - API_BASE_URL=http://web:8000/api
 
 volumes:
   postgres_data:
+  static_volume:
