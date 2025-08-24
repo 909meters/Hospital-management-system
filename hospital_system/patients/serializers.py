@@ -55,4 +55,4 @@ class MedicalRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = MedicalRecord
         fields = ('id', 'visit_date', 'diagnosis', 'treatment', 'notes', 'patient', 'created_by', 'created_by_name')
-        read_only_fields = ['created_by']
+        read_only_fields = ['created_by', 'patient']

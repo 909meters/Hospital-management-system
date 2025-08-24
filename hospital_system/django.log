@@ -267,3 +267,71 @@ C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-
 C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/ HTTP/1.1" 200 138
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 465
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 465
+Bad Request: /api/patients/2/records/
+"POST /api/patients/2/records/ HTTP/1.1" 400 39
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\serializers.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"POST /api/patients/2/records/ HTTP/1.1" 201 213
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/ HTTP/1.1" 200 125
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 679
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/9/records/ HTTP/1.1" 200 52
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 679
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 679
+"POST /api/patients/2/records/ HTTP/1.1" 201 161
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 841

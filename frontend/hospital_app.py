@@ -123,7 +123,15 @@ def login_page():
                         data = safe_json_parse(response)
                         if data:
                             st.session_state.token = data.get('token')
-                            st.session_state.user = data.get('user', {})
+                            # API returns user data directly, not in nested 'user' object
+                            st.session_state.user = {
+                                'id': data.get('user_id'),
+                                'username': data.get('username'),
+                                'email': data.get('email'),
+                                'role': data.get('role'),
+                                'first_name': data.get('first_name'),
+                                'last_name': data.get('last_name')
+                            }
                             st.success("Login successful!")
                             st.rerun()
                         else:
@@ -273,9 +281,13 @@ def patients_page():
     # Get current user role
     user_role = st.session_state.user.get('role', '')
     
+    # Debug information
+    st.write(f"**Debug:** Current user role: {user_role}")
+    st.write(f"**Debug:** Session state user: {st.session_state.user}")
+    
     if user_role == 'PATIENT':
         # For patients, show only their own profile (read-only)
-        st.info("As a patient, you can only view your own profile information.")
+        st.success("✅ **PATIENT VIEW**: You can only view your own profile information.")
         
         # Get current user profile
         user_profile_response = make_api_request('/users/profile/')
@@ -314,9 +326,13 @@ def patients_page():
                 st.error("Unable to get your user information.")
         else:
             st.error("Unable to fetch your profile information.")
+        
+        # Stop here for patients - no tabs or additional functionality
+        return
             
     else:
         # For doctors/admins, show full patient management functionality
+        st.success(f"✅ **{user_role} VIEW**: Full patient management access.")
         tab1, tab2 = st.tabs(["View Patients", "Add Patient"])
         
         with tab1:
@@ -675,8 +691,20 @@ def medical_records_page():
                                         st.rerun()
                                     else:
                                         error_data = safe_json_parse(response) if response else {}
-                                        error_msg = str(error_data) if error_data else "Unknown error"
-                                        st.error(f"Failed to add medical record: {error_msg}")
+                                        if isinstance(error_data, dict):
+                                            # Show detailed field errors if available
+                                            error_messages = []
+                                            for field, messages in error_data.items():
+                                                if isinstance(messages, list):
+                                                    error_messages.append(f"{field}: {', '.join(messages)}")
+                                                else:
+                                                    error_messages.append(f"{field}: {messages}")
+                                            error_msg = "; ".join(error_messages)
+                                        else:
+                                            error_msg = str(error_data) if error_data else "Unknown error"
+                                        
+                                        status_code = response.status_code if response else "N/A"
+                                        st.error(f"Failed to add medical record (Status: {status_code}): {error_msg}")
                                 else:
                                     st.error("Please fill in both Diagnosis and Treatment fields.")
             else:
