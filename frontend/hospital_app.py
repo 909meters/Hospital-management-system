@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 import plotly.express as px
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import json
 
 # Configuration
@@ -181,14 +181,16 @@ def dashboard_overview():
     
     with col1:
         if patients_response and patients_response.status_code == 200:
-            patients_count = len(patients_response.json().get('results', []))
+            patients_data = safe_json_parse(patients_response)
+            patients_count = len(patients_data.get('results', [])) if patients_data else 0
         else:
             patients_count = 0
         st.metric("Total Patients", patients_count)
     
     with col2:
         if appointments_response and appointments_response.status_code == 200:
-            appointments_count = len(appointments_response.json().get('results', []))
+            appointments_data = safe_json_parse(appointments_response)
+            appointments_count = len(appointments_data.get('results', [])) if appointments_data else 0
         else:
             appointments_count = 0
         st.metric("Total Appointments", appointments_count)
@@ -202,9 +204,10 @@ def dashboard_overview():
     # Recent activity
     st.subheader("📅 Recent Appointments")
     if appointments_response and appointments_response.status_code == 200:
-        appointments_data = appointments_response.json().get('results', [])
-        if appointments_data:
-            df = pd.DataFrame(appointments_data)
+        appointments_data = safe_json_parse(appointments_response)
+        appointments_list = appointments_data.get('results', []) if appointments_data else []
+        if appointments_list:
+            df = pd.DataFrame(appointments_list)
             st.dataframe(df, use_container_width=True)
         else:
             st.info("No appointments found.")
@@ -222,10 +225,11 @@ def patients_page():
         patients_response = make_api_request('/patients/')
         
         if patients_response and patients_response.status_code == 200:
-            patients_data = patients_response.json().get('results', [])
+            patients_data = safe_json_parse(patients_response)
+            patients_list = patients_data.get('results', []) if patients_data else []
             
-            if patients_data:
-                df = pd.DataFrame(patients_data)
+            if patients_list:
+                df = pd.DataFrame(patients_list)
                 
                 # Add search and filter
                 search_term = st.text_input("Search patients by name or phone")
@@ -239,28 +243,28 @@ def patients_page():
                 # Patient selection for detailed view
                 if len(df) > 0:
                     selected_patient_id = st.selectbox("Select patient for details:", 
-                                                     df['id'].tolist(), 
-                                                     format_func=lambda x: f"{df[df['id']==x]['first_name'].iloc[0]} {df[df['id']==x]['last_name'].iloc[0]}")
+                                                     df['user_id'].tolist(), 
+                                                     format_func=lambda x: f"{df[df['user_id']==x]['full_name'].iloc[0]}")
                     
                     if st.button("View Patient Details"):
                         patient_detail_response = make_api_request(f'/patients/{selected_patient_id}/')
                         if patient_detail_response and patient_detail_response.status_code == 200:
-                            patient_data = patient_detail_response.json()
-                            
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                st.write("**Personal Information:**")
-                                st.write(f"Name: {patient_data.get('first_name')} {patient_data.get('last_name')}")
-                                st.write(f"Date of Birth: {patient_data.get('date_of_birth')}")
-                                st.write(f"Gender: {patient_data.get('gender')}")
-                                st.write(f"Phone: {patient_data.get('phone')}")
-                                st.write(f"Email: {patient_data.get('email')}")
-                            
-                            with col2:
-                                st.write("**Address:**")
-                                st.write(f"{patient_data.get('address')}")
-                                st.write(f"Emergency Contact: {patient_data.get('emergency_contact')}")
-                                st.write(f"Insurance: {patient_data.get('insurance_info')}")
+                            patient_data = safe_json_parse(patient_detail_response)
+                            if patient_data:
+                                col1, col2 = st.columns(2)
+                                with col1:
+                                    st.write("**Personal Information:**")
+                                    st.write(f"Name: {patient_data.get('full_name', 'N/A')}")
+                                    st.write(f"Date of Birth: {patient_data.get('date_of_birth', 'N/A')}")
+                                    st.write(f"Phone: {patient_data.get('phone_number', 'N/A')}")
+                                
+                                with col2:
+                                    st.write("**Address:**")
+                                    st.write(f"{patient_data.get('address', 'N/A')}")
+                            else:
+                                st.error("Failed to parse patient data.")
+                        else:
+                            st.error("Failed to fetch patient details.")
             else:
                 st.info("No patients found.")
         else:
@@ -277,29 +281,23 @@ def patients_page():
                 first_name = st.text_input("First Name*")
                 last_name = st.text_input("Last Name*")
                 date_of_birth = st.date_input("Date of Birth*")
-                gender = st.selectbox("Gender*", ["M", "F", "O"])
-                phone = st.text_input("Phone*")
+                phone_number = st.text_input("Phone Number*")
             
             with col2:
                 email = st.text_input("Email")
                 address = st.text_area("Address")
-                emergency_contact = st.text_input("Emergency Contact")
-                insurance_info = st.text_area("Insurance Information")
             
             submit_patient = st.form_submit_button("Add Patient")
             
             if submit_patient:
-                if first_name and last_name and date_of_birth and gender and phone:
+                if first_name and last_name and date_of_birth and phone_number:
                     patient_data = {
                         'first_name': first_name,
                         'last_name': last_name,
                         'date_of_birth': date_of_birth.isoformat(),
-                        'gender': gender,
-                        'phone': phone,
-                        'email': email,
-                        'address': address,
-                        'emergency_contact': emergency_contact,
-                        'insurance_info': insurance_info
+                        'phone_number': phone_number,
+                        'email': email or '',
+                        'address': address or ''
                     }
                     
                     response = make_api_request('/patients/', 'POST', patient_data)
@@ -323,10 +321,11 @@ def appointments_page():
         appointments_response = make_api_request('/scheduling/appointments/')
         
         if appointments_response and appointments_response.status_code == 200:
-            appointments_data = appointments_response.json().get('results', [])
+            appointments_data = safe_json_parse(appointments_response)
+            appointments_list = appointments_data.get('results', []) if appointments_data else []
             
-            if appointments_data:
-                df = pd.DataFrame(appointments_data)
+            if appointments_list:
+                df = pd.DataFrame(appointments_list)
                 
                 # Date filter
                 col1, col2 = st.columns(2)
@@ -354,61 +353,76 @@ def appointments_page():
         # Schedule new appointment
         st.subheader("Schedule New Appointment")
         
-        # First get patients list
-        patients_response = make_api_request('/patients/')
+        # Check if current user is a patient
+        current_user_response = make_api_request('/users/profile/')
         
-        if patients_response and patients_response.status_code == 200:
-            patients_data = patients_response.json().get('results', [])
+        if current_user_response and current_user_response.status_code == 200:
+            user_data = safe_json_parse(current_user_response)
+            if not user_data or user_data.get('role') != 'PATIENT':
+                st.warning("⚠️ Only patients can schedule appointments. Please log in with a patient account.")
+                return
             
-            if patients_data:
-                with st.form("schedule_appointment_form"):
-                    # Patient selection
-                    patient_options = {f"{p['first_name']} {p['last_name']} (ID: {p['id']})": p['id'] 
-                                     for p in patients_data}
-                    selected_patient = st.selectbox("Select Patient*", list(patient_options.keys()))
-                    
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        appointment_date = st.date_input("Appointment Date*")
-                        appointment_time = st.time_input("Appointment Time*")
-                    
-                    with col2:
-                        appointment_type = st.selectbox("Appointment Type*", 
-                                                      ["consultation", "follow_up", "surgery", "emergency"])
-                        status = st.selectbox("Status", ["scheduled", "completed", "cancelled"])
-                    
-                    reason = st.text_area("Reason for Visit")
-                    notes = st.text_area("Notes")
-                    
-                    submit_appointment = st.form_submit_button("Schedule Appointment")
-                    
-                    if submit_appointment:
-                        if selected_patient and appointment_date and appointment_time and appointment_type:
-                            # Combine date and time
-                            appointment_datetime = datetime.combine(appointment_date, appointment_time)
-                            
-                            appointment_data = {
-                                'patient': patient_options[selected_patient],
-                                'appointment_date': appointment_datetime.isoformat(),
-                                'appointment_type': appointment_type,
-                                'status': status,
-                                'reason': reason,
-                                'notes': notes
-                            }
-                            
-                            response = make_api_request('/scheduling/appointments/', 'POST', appointment_data)
-                            
-                            if response and response.status_code == 201:
-                                st.success("Appointment scheduled successfully!")
-                                st.rerun()
+            # Get doctors only
+            doctors_response = make_api_request('/users/doctors/')
+            
+            if doctors_response and doctors_response.status_code == 200:
+                doctors_data = safe_json_parse(doctors_response)
+                doctors_list = doctors_data.get('results', []) if doctors_data else []
+                
+                if doctors_list:
+                    with st.form("schedule_appointment_form"):
+                        st.info("📝 You are scheduling an appointment for yourself")
+                        
+                        # Doctor selection
+                        doctor_options = {f"Dr. {d['first_name']} {d['last_name']} (ID: {d['id']})": d['id'] 
+                                        for d in doctors_list}
+                        selected_doctor = st.selectbox("Select Doctor*", list(doctor_options.keys()))
+                        
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            appointment_date = st.date_input("Appointment Date*")
+                            start_time = st.time_input("Start Time*", value=datetime.strptime("09:00", "%H:%M").time())
+                        
+                        with col2:
+                            duration = st.selectbox("Duration (minutes)", [30, 45, 60, 90, 120], index=1)
+                            status = st.selectbox("Status", ["SCHEDULED", "COMPLETED", "CANCELLED"])
+                        
+                        notes = st.text_area("Notes")
+                        
+                        submit_appointment = st.form_submit_button("Schedule Appointment")
+                        
+                        if submit_appointment:
+                            if selected_doctor and appointment_date and start_time:
+                                # Combine date and time for start_time
+                                start_datetime = datetime.combine(appointment_date, start_time)
+                                # Calculate end_time
+                                end_datetime = start_datetime + timedelta(minutes=duration)
+                                
+                                appointment_data = {
+                                    'doctor': doctor_options[selected_doctor],
+                                    'start_time': start_datetime.isoformat(),
+                                    'end_time': end_datetime.isoformat(),
+                                    'status': status,
+                                    'notes': notes or ''
+                                }
+                                
+                                response = make_api_request('/scheduling/appointments/', 'POST', appointment_data)
+                                
+                                if response and response.status_code == 201:
+                                    st.success("Appointment scheduled successfully!")
+                                    st.rerun()
+                                else:
+                                    error_data = safe_json_parse(response) if response else {}
+                                    error_msg = str(error_data) if error_data else "Unknown error"
+                                    st.error(f"Failed to schedule appointment: {error_msg}")
                             else:
-                                st.error("Failed to schedule appointment. Please try again.")
-                        else:
-                            st.error("Please fill in all required fields.")
+                                st.error("Please fill in all required fields.")
+                else:
+                    st.error("No doctors available. Please contact administration.")
             else:
-                st.error("No patients available. Please add patients first.")
+                st.error("Unable to fetch doctors data.")
         else:
-            st.error("Unable to fetch patients data.")
+            st.error("Unable to fetch user profile data.")
 
 def medical_records_page():
     """Medical records management page"""
@@ -418,12 +432,13 @@ def medical_records_page():
     patients_response = make_api_request('/patients/')
     
     if patients_response and patients_response.status_code == 200:
-        patients_data = patients_response.json().get('results', [])
+        patients_data = safe_json_parse(patients_response)
+        patients_list = patients_data.get('results', []) if patients_data else []
         
-        if patients_data:
-            # Patient selection
-            patient_options = {f"{p['first_name']} {p['last_name']} (ID: {p['id']})": p['id'] 
-                             for p in patients_data}
+        if patients_list:
+            # Patient selection - используем правильные поля
+            patient_options = {f"{p['full_name']} (ID: {p['user_id']})": p['user_id'] 
+                             for p in patients_list}
             selected_patient = st.selectbox("Select Patient to view/add medical records:", 
                                           list(patient_options.keys()))
             
@@ -437,7 +452,7 @@ def medical_records_page():
                     records_response = make_api_request(f'/patients/{patient_id}/records/')
                     
                     if records_response and records_response.status_code == 200:
-                        records_data = records_response.json()
+                        records_data = safe_json_parse(records_response)
                         
                         if records_data:
                             for record in records_data:
@@ -505,10 +520,11 @@ def users_page():
         users_response = make_api_request('/users/doctors/')
         
         if users_response and users_response.status_code == 200:
-            users_data = users_response.json().get('results', [])
+            users_data = safe_json_parse(users_response)
+            users_list = users_data.get('results', []) if users_data else []
             
-            if users_data:
-                df = pd.DataFrame(users_data)
+            if users_list:
+                df = pd.DataFrame(users_list)
                 st.dataframe(df, use_container_width=True)
             else:
                 st.info("No users found.")

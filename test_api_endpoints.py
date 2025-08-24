@@ -31,7 +31,7 @@ def test_endpoints(token):
     endpoints = [
         ('/patients/', 'Patients'),
         ('/scheduling/appointments/', 'Appointments'),
-        ('/users/', 'Users'),
+        ('/users/doctors/', 'Doctors'),
         ('/auth/profile/', 'User Profile'),
     ]
     

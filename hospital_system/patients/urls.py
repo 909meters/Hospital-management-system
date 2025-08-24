@@ -6,7 +6,7 @@ router = routers.SimpleRouter()
 router.register(r'', PatientViewSet, basename='patients')
 
 records_router = routers.NestedSimpleRouter(router, r'', lookup='patient')
-records_router.register(r'(?P<patient_pk>[^/.]+)/records', MedicalRecordViewSet, basename='patient-records')
+records_router.register(r'records', MedicalRecordViewSet, basename='patient-records')
 
 
 
