@@ -17,3 +17,253 @@ C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-
 C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\users\views.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\hospital_system\settings.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\hospital_system\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 3477
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 168
+"GET /api/patients/ HTTP/1.1" 200 1226
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/patients/ HTTP/1.1" 200 1226
+"GET /api/patients/ HTTP/1.1" 200 1226
+"GET /api/patients/2/ HTTP/1.1" 200 125
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 112
+"GET /api/patients/ HTTP/1.1" 200 1226
+"GET /api/patients/2/records/ HTTP/1.1" 200 465
+"GET /api/patients/ HTTP/1.1" 200 1226
+"GET /api/patients/12/records/ HTTP/1.1" 200 52
+"POST /api/auth/login/ HTTP/1.1" 200 173
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 234
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 234
+"GET /api/users/profile/ HTTP/1.1" 200 117
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 234
+"GET /api/users/profile/ HTTP/1.1" 200 117
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"POST /api/scheduling/appointments/ HTTP/1.1" 201 160
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 395
+"GET /api/users/profile/ HTTP/1.1" 200 117
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 395
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 395
+"GET /api/users/profile/ HTTP/1.1" 200 117
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+Forbidden: /api/patients/
+"GET /api/patients/ HTTP/1.1" 403 63
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /api/token/
+"POST /api/token/ HTTP/1.1" 404 3526
+Not Found: /api/token/
+"POST /api/token/ HTTP/1.1" 404 3526
+Not Found: /api/token/
+"POST /api/token/ HTTP/1.1" 404 3526
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/patients/ HTTP/1.1" 200 190
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/users/profile/ HTTP/1.1" 200 121
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 155
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/users/profile/ HTTP/1.1" 200 99
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"POST /api/auth/login/ HTTP/1.1" 200 168
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/users/profile/ HTTP/1.1" 200 112
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/patients/ HTTP/1.1" 200 190
+Forbidden: /api/patients/15/records/
+"GET /api/patients/15/records/ HTTP/1.1" 403 63
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 52
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"POST /api/scheduling/appointments/ HTTP/1.1" 201 158
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/patients/ HTTP/1.1" 200 190
+Forbidden: /api/patients/15/records/
+"GET /api/patients/15/records/ HTTP/1.1" 403 63
+"GET /api/patients/ HTTP/1.1" 200 190
+Forbidden: /api/patients/15/records/
+"GET /api/patients/15/records/ HTTP/1.1" 403 63
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/patients/ HTTP/1.1" 200 190
+Forbidden: /api/patients/15/records/
+"GET /api/patients/15/records/ HTTP/1.1" 403 63
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+Forbidden: /api/patients/2/records/
+"GET /api/patients/2/records/ HTTP/1.1" 403 63
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"GET /api/patients/ HTTP/1.1" 200 190
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 177
+Forbidden: /api/patients/
+"POST /api/patients/ HTTP/1.1" 403 63
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 155
+"POST /api/patients/ HTTP/1.1" 201 127
+"DELETE /api/patients/16/ HTTP/1.1" 204 0
+"POST /api/auth/login/ HTTP/1.1" 200 177
+Forbidden: /api/patients/
+"POST /api/patients/ HTTP/1.1" 403 63
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 155
+"POST /api/patients/ HTTP/1.1" 201 127
+"DELETE /api/patients/17/ HTTP/1.1" 204 0
+"POST /api/auth/login/ HTTP/1.1" 200 177
+Forbidden: /api/patients/
+"POST /api/patients/ HTTP/1.1" 403 63
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"POST /api/patients/ HTTP/1.1" 201 127
+"DELETE /api/patients/18/ HTTP/1.1" 204 0
+"POST /api/auth/login/ HTTP/1.1" 200 155
+"POST /api/patients/ HTTP/1.1" 201 127
+"DELETE /api/patients/19/ HTTP/1.1" 204 0
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/ HTTP/1.1" 200 190
+Forbidden: /api/patients/
+"POST /api/patients/ HTTP/1.1" 403 63
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/users/doctors/ HTTP/1.1" 200 545
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/2/records/ HTTP/1.1" 200 465
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/9/records/ HTTP/1.1" 200 52
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/12/records/ HTTP/1.1" 200 52
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+C:\Users\kuatk\PythonProjects\software_architecture\Project\Hospital-management-system\hospital_system\patients\permissions.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
