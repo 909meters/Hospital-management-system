@@ -137,10 +137,14 @@ streamlit run hospital_app.py
 
 ## 📚 Project Documentation
 
+- **[`FINAL_PROJECT_SUMMARY.md`](FINAL_PROJECT_SUMMARY.md)** - 🎉 Complete project overview and readiness status
 - **[`README.md`](README.md)** - Project overview and quick start guide
+- **[`PRE_PRESENTATION_CHECKLIST.md`](PRE_PRESENTATION_CHECKLIST.md)** - ✅ Final verification checklist
+- **[`PRESENTATION_MATERIALS.md`](PRESENTATION_MATERIALS.md)** - 🎓 Visual diagrams and presentation materials
 - **[`ARCHITECTURE_CHARACTERISTICS.md`](ARCHITECTURE_CHARACTERISTICS.md)** - Detailed architecture characteristics and metrics
 - **[`TECHNICAL_SPECS.md`](TECHNICAL_SPECS.md)** - Detailed technical specifications and architecture
 - **[`REQUIREMENTS_COMPLIANCE.md`](REQUIREMENTS_COMPLIANCE.md)** - Requirements fulfillment matrix
+- **[`ARCHITECTURE_DECISIONS.md`](ARCHITECTURE_DECISIONS.md)** - Architecture Decision Records (ADRs)
 - **[`DOCKER_README.md`](DOCKER_README.md)** - Docker deployment and management
 - **[`Hospital_System_API.postman_collection.json`](Hospital_System_API.postman_collection.json)** - API testing collection
 
