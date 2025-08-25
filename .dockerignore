@@ -1,0 +1,64 @@
+# Git files
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info
+.pytest_cache
+
+# Virtual environments
+envir/
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database files
+*.sqlite3
+*.db
+
+# Node modules (if any)
+node_modules/
+
+# Documentation build
+docs/_build/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Environment files
+.env
+.env.local
+.env.docker
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Build artifacts
+build/
+dist/
+*.egg
+staticfiles/

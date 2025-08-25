@@ -281,13 +281,9 @@ def patients_page():
     # Get current user role
     user_role = st.session_state.user.get('role', '')
     
-    # Debug information
-    st.write(f"**Debug:** Current user role: {user_role}")
-    st.write(f"**Debug:** Session state user: {st.session_state.user}")
-    
     if user_role == 'PATIENT':
         # For patients, show only their own profile (read-only)
-        st.success("✅ **PATIENT VIEW**: You can only view your own profile information.")
+        st.info("🔒 As a patient, you can only view your own profile information.")
         
         # Get current user profile
         user_profile_response = make_api_request('/users/profile/')
@@ -305,19 +301,19 @@ def patients_page():
                     if patients_list and len(patients_list) > 0:
                         patient_data = patients_list[0]  # Should only be one patient (current user)
                         
-                        st.subheader("Your Profile Information")
+                        st.subheader("📋 Your Profile Information")
                         col1, col2 = st.columns(2)
                         
                         with col1:
                             st.write("**Personal Information:**")
-                            st.write(f"Name: {patient_data.get('full_name', 'N/A')}")
-                            st.write(f"Date of Birth: {patient_data.get('date_of_birth', 'N/A')}")
-                            st.write(f"Phone: {patient_data.get('phone_number', 'N/A')}")
+                            st.write(f"👤 **Name:** {patient_data.get('full_name', 'N/A')}")
+                            st.write(f"🎂 **Date of Birth:** {patient_data.get('date_of_birth', 'N/A')}")
+                            st.write(f"📱 **Phone:** {patient_data.get('phone_number', 'N/A')}")
                         
                         with col2:
                             st.write("**Contact Information:**")
-                            st.write(f"Email: {user_data.get('email', 'N/A')}")
-                            st.write(f"Address: {patient_data.get('address', 'N/A')}")
+                            st.write(f"📧 **Email:** {user_data.get('email', 'N/A')}")
+                            st.write(f"🏠 **Address:** {patient_data.get('address', 'N/A')}")
                     else:
                         st.warning("Patient profile not found.")
                 else:
@@ -332,7 +328,7 @@ def patients_page():
             
     else:
         # For doctors/admins, show full patient management functionality
-        st.success(f"✅ **{user_role} VIEW**: Full patient management access.")
+        st.success(f"✅ **{user_role} Access**: Full patient management capabilities")
         tab1, tab2 = st.tabs(["View Patients", "Add Patient"])
         
         with tab1:

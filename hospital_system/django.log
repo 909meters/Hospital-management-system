@@ -335,3 +335,36 @@ Watching for file changes with StatReloader
 "POST /api/patients/2/records/ HTTP/1.1" 201 161
 "GET /api/patients/ HTTP/1.1" 200 1365
 "GET /api/patients/2/records/ HTTP/1.1" 200 841
+"POST /api/auth/login/ HTTP/1.1" 200 177
+"GET /api/users/profile/ HTTP/1.1" 200 121
+"GET /api/patients/ HTTP/1.1" 200 190
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 210
+Forbidden: /api/patients/
+"POST /api/patients/ HTTP/1.1" 403 63
+"POST /api/auth/login/ HTTP/1.1" 200 162
+"GET /api/users/profile/ HTTP/1.1" 200 106
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 732
+"POST /api/patients/ HTTP/1.1" 201 125
+"DELETE /api/patients/20/ HTTP/1.1" 204 0
+"POST /api/auth/login/ HTTP/1.1" 200 155
+"GET /api/users/profile/ HTTP/1.1" 200 99
+"GET /api/patients/ HTTP/1.1" 200 1365
+"GET /api/patients/15/records/ HTTP/1.1" 200 325
+"GET /api/scheduling/appointments/ HTTP/1.1" 200 1060
+"POST /api/patients/ HTTP/1.1" 201 126
+"DELETE /api/patients/21/ HTTP/1.1" 204 0
+Watching for file changes with StatReloader
+Not Found: /api/
+"GET /api/ HTTP/1.1" 404 3507
+Bad Request: /api/auth/login/
+"POST /api/auth/login/ HTTP/1.1" 400 68
+"POST /api/auth/login/ HTTP/1.1" 200 168
+/app/hospital_system/settings.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /api/auth/login/ HTTP/1.1" 200 179
+"GET /api/patients/ HTTP/1.1" 200 189
+/app/hospital_system/settings.py changed, reloading.
+Watching for file changes with StatReloader

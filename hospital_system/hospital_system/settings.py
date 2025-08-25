@@ -101,6 +101,9 @@ WSGI_APPLICATION = 'hospital_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+
+# Default SQLite database for development
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -108,7 +111,11 @@ DATABASES = {
     }
 }
 
-# For production, use PostgreSQL:
+# Use PostgreSQL if DATABASE_URL is provided (for Docker/production)
+if config('DATABASE_URL', default=None):
+    DATABASES['default'] = dj_database_url.parse(config('DATABASE_URL'))
+
+# Alternative manual PostgreSQL configuration:
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',

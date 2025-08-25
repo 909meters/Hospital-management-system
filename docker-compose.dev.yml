@@ -1,0 +1,70 @@
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: hospital_db_dev
+    restart: unless-stopped
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: hospital_db
+      POSTGRES_USER: hospital_user
+      POSTGRES_PASSWORD: hospital_pass123
+    ports:
+      - "5432:5432"
+    networks:
+      - hospital_network
+
+  # Django Backend API
+  backend:
+    build: 
+      context: ./hospital_system
+      dockerfile: Dockerfile
+    container_name: hospital_backend_dev
+    restart: unless-stopped
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./hospital_system:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=dev-secret-key-not-for-production
+      - DATABASE_URL=postgresql://hospital_user:hospital_pass123@db:5432/hospital_db
+      - ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0,backend
+      - CORS_ALLOWED_ORIGINS=http://localhost:8501,http://127.0.0.1:8501
+    networks:
+      - hospital_network
+
+  # Streamlit Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hospital_frontend_dev
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      - API_BASE_URL=http://localhost:8000/api
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    networks:
+      - hospital_network
+
+volumes:
+  postgres_data_dev:
+    driver: local
+
+networks:
+  hospital_network:
+    driver: bridge
