@@ -84,18 +84,18 @@ Access the application at: http://localhost:8501
 
 ## Performance Metrics
 
-**Response Time**: API endpoints average ~150ms response time
-**Concurrent Load**: Successfully tested with 50+ simultaneous users
-**Deployment Time**: Complete system deployment in under 5 minutes
-**Security Compliance**: Role-based access control functioning as designed
+- **Response Time**: API endpoints average ~150ms response time
+- **Concurrent Load**: Successfully tested with 50+ simultaneous users
+- **Deployment Time**: Complete system deployment in under 5 minutes
+- **Security Compliance**: Role-based access control functioning as designed
 
 ## Learning Outcomes
 
-**API Design**: Understanding of RESTful architecture principles and implementation
-**Database Management**: Experience with PostgreSQL relationships and Django ORM
-**Security Implementation**: Knowledge of authentication, authorization, and input validation
-**Containerization**: Proficiency in Docker deployment strategies
-**Software Architecture**: Practical application of layered architecture patterns
+- **API Design**: Understanding of RESTful architecture principles and implementation
+- **Database Management**: Experience with PostgreSQL relationships and Django ORM
+- **Security Implementation**: Knowledge of authentication, authorization, and input validation
+- **Containerization**: Proficiency in Docker deployment strategies
+- **Software Architecture**: Practical application of layered architecture patterns
 
 ## Project Structure
 
