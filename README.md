@@ -4,7 +4,6 @@
 
 **Institution**: University Ca'Foscari, Computer Science Program  
 **Course**: Software Architecture  
-**Project Duration**: 1 month  
 **Academic Year**: 2025
 
 ## Architecture Overview
