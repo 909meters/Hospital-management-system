@@ -1,25 +1,6 @@
 # Hospital Management System
 
-## Student Proje## 🏗️ Architecture Approach
-
-**Pattern**: Layered Architecture (3-tier)
-- **Presentation**: Streamlit frontend (user interface)
-- **Business Logic**: Django REST API (core functionality)
-- **Data**: PostgreSQL database (persistent storage)
-
-**Key Decisions**:
-- **Token-based auth** for API security and scalability
-- **Role-based permissions** for medical data protection
-- **Docker containers** for consistent deployment
-- **RESTful design** following industry standards
-
-## 🎓 What I Learned
-
-- **API Design**: How to structure REST endpoints that make sense
-- **Database**: PostgreSQL relationships and migrations
-- **Security**: Authentication, authorization, input validation
-- **Docker**: Container deployment (confusing at first!)
-- **Architecture**: Separating frontend, API, and database layersftware Architecture Course
+## Student Project - Software Architecture Course
 
 This is my final project for Software Architecture at University Ca'Foscari. I built a web-based hospital management system to learn about API design, database relationships, and modern deployment practices.
 
@@ -33,7 +14,7 @@ Hospitals have tons of paperwork and scheduling chaos. My system lets:
 - **Doctors**: Manage patient records and schedules  
 - **Admin**: Add new patients and oversee everything
 
-## 🛠️ What I Built With
+## What I Built With
 
 - **Backend**: Django (familiar from class) + PostgreSQL
 - **Frontend**: Streamlit (quick to build, focuses on backend learning)
@@ -76,14 +57,11 @@ Then open http://localhost:8501
 ## Project Structure
 
 ```
-├── hospital_system/                    # Django backend (main logic)
-├── frontend/                          # Streamlit UI
-├── docker-compose.dev.yml             # Development setup
-├── start-docker-dev.ps1              # Quick start script
-├── Hospital_System_API.postman_collection.json  # API tests
-├── README.md                          # This file
-├── SETUP.md                          # How to run everything
-└── PROJECT_NOTES.md                  # My development notes
+├── hospital_system/     # Django backend (main logic)
+├── frontend/           # Streamlit UI
+├── docker-compose.yml  # Production deployment
+├── SETUP.md           # How to run everything
+└── PROJECT_NOTES.md   # My development notes
 ```
 
 ## What I'd Improve
