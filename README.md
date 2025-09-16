@@ -1,6 +1,6 @@
 # Hospital Management System
 
-## Student Proje## 🏗️ Architecture Approach
+### Architecture Approach
 
 **Pattern**: Layered Architecture (3-tier)
 - **Presentation**: Streamlit frontend (user interface)
@@ -13,7 +13,7 @@
 - **Docker containers** for consistent deployment
 - **RESTful design** following industry standards
 
-## 🎓 What I Learned
+## What I Learned
 
 - **API Design**: How to structure REST endpoints that make sense
 - **Database**: PostgreSQL relationships and migrations
@@ -23,9 +23,6 @@
 
 This is my final project for Software Architecture at University Ca'Foscari. I built a web-based hospital management system to learn about API design, database relationships, and modern deployment practices.
 
-**Time spent**: ~1 month  
-**Main goal**: Learn how to build a real full-stack application
-
 ## The Problem I'm Solving
 
 Hospitals have tons of paperwork and scheduling chaos. My system lets:
@@ -33,7 +30,7 @@ Hospitals have tons of paperwork and scheduling chaos. My system lets:
 - **Doctors**: Manage patient records and schedules  
 - **Admin**: Add new patients and oversee everything
 
-## 🛠️ What I Built With
+## What I Built With
 
 - **Backend**: Django (familiar from class) + PostgreSQL
 - **Frontend**: Streamlit (quick to build, focuses on backend learning)
